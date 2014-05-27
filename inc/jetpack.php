@@ -16,4 +16,4 @@ function bsw_io_jetpack_setup() {
 		'footer'    => 'page',
 	) );
 }
-add_action( 'after_setup_theme', 'bsw_io_jetpack_setup' );
+//add_action( 'after_setup_theme', 'bsw_io_jetpack_setup' );

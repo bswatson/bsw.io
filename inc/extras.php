@@ -87,3 +87,33 @@ function bsw_io_setup_author() {
 	}
 }
 add_action( 'wp', 'bsw_io_setup_author' );
+
+/**
+ * Adds appropriate classes to body tag based on post
+ *
+ * @param array $classes Body Class list
+ * @return array Update list of classes to add to the body
+ */
+function bsw_io_add_body_classes($classes){
+	global $post;
+
+	if ( is_home() && !is_front_page() ) {
+		$classes[] = 'list-style';
+	}
+
+	if ( is_search() ) {
+		$classes[] = 'list-style';
+	}
+
+	return $classes;
+}
+add_filter('body_class', 'bsw_io_add_body_classes');
+
+/**
+ * Adds styles to previous and next links
+ */
+function posts_link_attributes() {
+	return 'class="button transparent aqua"';
+}
+add_filter('next_posts_link_attributes', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');

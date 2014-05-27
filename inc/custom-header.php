@@ -34,7 +34,7 @@ function bsw_io_custom_header_setup() {
 		'admin-preview-callback' => 'bsw_io_admin_header_image',
 	) ) );
 }
-add_action( 'after_setup_theme', 'bsw_io_custom_header_setup' );
+// add_action( 'after_setup_theme', 'bsw_io_custom_header_setup' );
 
 if ( ! function_exists( 'bsw_io_header_style' ) ) :
 /**
