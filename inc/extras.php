@@ -47,20 +47,23 @@ function bsw_io_wp_title( $title, $sep ) {
 		return $title;
 	}
 
-	global $page, $paged;
+	// Let Yoast's SEO plugin to handle titles, if installed
+	if (!defined('WPSEO_VERSION')) {
+		global $page, $paged;
 
-	// Add the blog name
-	$title .= get_bloginfo( 'name', 'display' );
+		// Add the blog name
+		$title .= get_bloginfo( 'name', 'display' );
 
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title .= " $sep $site_description";
-	}
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) ) {
+			$title .= " $sep $site_description";
+		}
 
-	// Add a page number if necessary:
-	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'bsw-io' ), max( $paged, $page ) );
+		// Add a page number if necessary:
+		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+			$title .= " $sep " . sprintf( __( 'Page %s', 'bsw-io' ), max( $paged, $page ) );
+		}
 	}
 
 	return $title;
