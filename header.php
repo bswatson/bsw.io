@@ -19,7 +19,7 @@
 	}
 	?>">
 	<style type="text/css">@-ms-viewport{width: device-width;}</style>
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php wp_title( "&raquo;", true, 'right' ); ?></title>
 	<?php // <link rel="icon" href="favicon.ico"> ?>
 	<?php // <link rel="apple-touch-icon" href="img/apple-touch-icon.png"> ?>
 	<?php // <link rel="apple-touch-icon" sizes="76x76" href="img/apple-touch-icon-76x76.png"> ?>
