@@ -18,18 +18,21 @@
 				if ( $categories_list && bsw_io_categorized_blog() ) :
 					?>
 					<span class="cat-links">
-                    <?php printf( __( 'Posted in %1$s', 'bsw-io' ), $categories_list ); ?>
-                </span>
+						<?php printf( __( 'Posted in %1$s', 'bsw-io' ), $categories_list ); ?>
+					</span>
 				<?php endif; // End if categories ?>
 
 				<?php
 				/* translators: used between list items, there is a space after the comma */
 				$tags_list = get_the_tag_list( '', __( ', ', 'bsw-io' ), ' - ' );
 				if ( $tags_list ) :
+					if ( $categories_list && bsw_io_categorized_blog() ) :
+						echo '-';
+					endif;
 					?>
 					<span class="tags-links">
-                        <?php printf( __( '%1$s', 'bsw-io' ), $tags_list ); ?>
-                    </span>
+						<?php printf( __( '%1$s', 'bsw-io' ), $tags_list ); ?>
+					</span>
 				<?php endif; // End if $tags_list ?>
 			<?php endif; // End if 'post' == get_post_type() ?>
 			<?php bsw_io_posted_on(); ?>

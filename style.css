@@ -351,6 +351,10 @@ header {
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
+section header {
+	position: relative;
+}
+
 .no-parallax header {
 	z-index: 9998 !important;
 	background-color: rgba(255, 255, 255, 0.97) !important;
@@ -773,6 +777,12 @@ nav ul.sub-menu > li:last-child > a {
 /*----------------------------------------------------------------
     Blog & Portfolio
 ----------------------------------------------------------------*/
+
+.page-title {
+	margin-bottom: 0 !important;
+	padding: 1em 0;
+	border-bottom: 1px solid #DDD;
+}
 
 .single #post-nav ul {
 	padding: 1em 0;
@@ -1962,79 +1972,6 @@ section.greyish {
 }
 
 /*----------------------------------------------------------------
-    Contact forms
-----------------------------------------------------------------*/
-
-.contact-section input,
-.contact-section textarea,
-.comment-form input,
-.comment-form textarea {
-	background-color: rgba(255, 255, 255, 0.15);
-	font-size: 0.889em !important;
-}
-
-.text-light input,
-.text-light textarea {
-	color: #fff;
-}
-
-.text-light input:not([type="button"]):hover,
-.text-light textarea:not([type="button"]):hover {
-	border-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.text-light textarea:not([type="button"]):focus,
-.text-light textarea:not([type="button"]):active,
-.text-light input:not([type="button"]):focus,
-.text-light input:not([type="button"]):active {
-	border-color: #fff !important;
-}
-
-.text-light .contact-section i {
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.text-light ::-webkit-input-placeholder {
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.text-light :-moz-placeholder {
-	/* Firefox 18- */
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.text-light ::-moz-placeholder {
-	/* Firefox 19+ */
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.text-light :-ms-input-placeholder {
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.contact-section input.name,
-.contact-section input.email,
-.comment-form input.name,
-.comment-form input.email {
-	padding-left: 3em;
-}
-
-.contact-section input.name,
-.contact-section input.email,
-.contact-section textarea,
-.comment-form input.name,
-.comment-form input.email,
-.comment-form textarea {
-	max-width: 100%;
-	width: 100%;
-}
-
-.contact-section input[type="submit"],
-.comment-form input[type="submit"] {
-	float: right;
-}
-
-/*----------------------------------------------------------------
     Team
 ----------------------------------------------------------------*/
 
@@ -2167,17 +2104,17 @@ section.greyish {
 	font-size: 1.2em;
 }
 
-.author {
+.quote .author {
 	margin-bottom: 1em;
 	font-size: 0.889em;
 	opacity: 0.7;
 }
 
-.author:before {
+.quote .author:before {
 	content: '− ';
 }
 
-.author:after {
+.quote .author:after {
 	content: ' -';
 }
 
@@ -2460,7 +2397,8 @@ section.greyish {
 ----------------------------------------------------------------*/
 
 .button,
-input.button {
+input.button,
+.comment-form input[type="submit"] {
 	position: relative;
 	display: inline-block;
 	margin-right: 1em;
@@ -2795,6 +2733,85 @@ input.button.transparent.dark-grey:hover {
 	border: 2px solid rgba(84, 87, 102, 1);
 	background-color: rgba(84, 87, 102, 1);
 	color: #fff !important;
+}
+
+/*----------------------------------------------------------------
+    Contact forms
+----------------------------------------------------------------*/
+
+.contact-section input,
+.contact-section textarea,
+.comment-form input,
+.comment-form textarea {
+	background-color: rgba(255, 255, 255, 0.15);
+	font-size: 0.889em !important;
+}
+
+.text-light input,
+.text-light textarea {
+	color: #fff;
+}
+
+.text-light input:not([type="button"]):hover,
+.text-light textarea:not([type="button"]):hover {
+	border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.text-light textarea:not([type="button"]):focus,
+.text-light textarea:not([type="button"]):active,
+.text-light input:not([type="button"]):focus,
+.text-light input:not([type="button"]):active {
+	border-color: #fff !important;
+}
+
+.text-light .contact-section i {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.text-light ::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.text-light :-moz-placeholder {
+	/* Firefox 18- */
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.text-light ::-moz-placeholder {
+	/* Firefox 19+ */
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.text-light :-ms-input-placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-section input.name,
+.contact-section input.email,
+.contact-section input.url,
+.comment-form input.name,
+.comment-form input.email,
+.comment-form input.url {
+	padding-left: 3em;
+}
+
+.contact-section input.name,
+.contact-section input.email,
+.contact-section input.url,
+.contact-section textarea,
+.comment-form input.name,
+.comment-form input.email,
+.comment-form input.url,
+.comment-form textarea {
+	max-width: 100%;
+	width: 100%;
+}
+
+.contact-section input[type="submit"],
+.comment-form input[type="submit"] {
+	background-color: #FD685B;
+	border: none;
+	float: right;
 }
 
 /*----------------------------------------------------------------

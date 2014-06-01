@@ -45,15 +45,21 @@ if ( ! function_exists( 'bsw_io_post_nav' ) ) :
 			return;
 		}
 		?>
-		<nav class="navigation post-navigation" role="navigation">
+		<div id="post-nav" role="navigation">
 			<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'bsw-io' ); ?></h1>
-			<div class="nav-links">
-				<?php
-				previous_post_link( '<div class="nav-previous">%link</div>', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'bsw-io' ) );
-				next_post_link(     '<div class="nav-next">%link</div>',     _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',     'bsw-io' ) );
-				?>
-			</div><!-- .nav-links -->
-		</nav><!-- .navigation -->
+			<ul class="clear-after reset plain">
+				<li id="prev-items" class="post-nav">
+				<?php previous_post_link( '%link ', _x( '<i class="fa fa-chevron-left"></i><span class="label">%title</span>', 'Previous post link', 'bsw-io' ) ); ?>
+				</li>
+				<li id="all-items" class="post-nav">
+					<a href="<?php echo bsw_io_blog_page(); ?>"><i class="icon icon-images"></i>
+					</a>
+				</li>
+				<li id="next-items" class="post-nav">
+				<?php next_post_link( '%link', _x( '<span class="label">%title</span><i class="fa fa-chevron-right"></i>', 'Next post link', 'bsw-io' ) ); ?>
+				</li>
+			</ul>
+		</div>
 	<?php
 	}
 endif;
@@ -116,6 +122,20 @@ function bsw_io_categorized_blog() {
 		return false;
 	}
 }
+
+if ( ! function_exists( 'bsw_io_blog_page' ) ) :
+	/**
+	 * Returns the main listing page
+	 * 
+	 * @return string url for the listing page
+	 */
+	function bsw_io_blog_page() {
+		if( get_option( 'show_on_front' ) == 'page' ) 
+			return get_permalink( get_option( 'page_for_posts' ) );
+		else 
+			return bloginfo('url');
+	}
+endif;
 
 /**
  * Flush out the transients used in bsw_io_categorized_blog.

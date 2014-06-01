@@ -30,6 +30,18 @@ function bsw_io_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
+	
+	if (is_archive()) {
+		$classes[] = 'blog';
+	}
+
+	if ( is_home() && !is_front_page() || is_search() || is_archive()) {
+		$classes[] = 'list-style';
+	}
+	
+	if ((is_search() || is_archive()) && !have_posts()) {
+		$classes[] = 'search-no-results';
+	}
 
 	return $classes;
 }
@@ -90,27 +102,6 @@ function bsw_io_setup_author() {
 	}
 }
 add_action( 'wp', 'bsw_io_setup_author' );
-
-/**
- * Adds appropriate classes to body tag based on post
- *
- * @param array $classes Body Class list
- * @return array Update list of classes to add to the body
- */
-function bsw_io_add_body_classes($classes){
-	global $post;
-
-	if ( is_home() && !is_front_page() ) {
-		$classes[] = 'list-style';
-	}
-
-	if ( is_search() ) {
-		$classes[] = 'list-style';
-	}
-
-	return $classes;
-}
-add_filter('body_class', 'bsw_io_add_body_classes');
 
 /**
  * Adds styles to previous and next links

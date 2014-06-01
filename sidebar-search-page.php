@@ -7,12 +7,8 @@
 ?>
 
 <aside role="complementary" class="sidebar column three last">
-	<?php if ( ! dynamic_sidebar( 'primary-sidebar' ) ) : ?>
-
-		<aside id="search" class="widget widget_search">
-			<?php get_search_form(); ?>
-		</aside>
-
+	<?php if ( ! dynamic_sidebar( 'sidebar-search-page' ) ) : ?>
+		
 		<aside id="archives" class="widget">
 			<h4 class="widget-title"><?php _e( 'Archives', 'bsw-io' ); ?></h4>
 			<ul>

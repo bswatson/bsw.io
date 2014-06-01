@@ -81,6 +81,16 @@ function bsw_io_widgets_init() {
 			'before_title'  => '<h4>',
 			'after_title'   => '</h4>',
 	) );
+	
+	register_sidebar( array(
+			'name'          => __( 'Search Sidebar', 'bsw-io' ),
+			'id'            => 'sidebar-search-page',
+			'description'   => '',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<h4>',
+			'after_title'   => '</h4>',
+	) );
 
 	register_sidebar( array(
 			'name'          => __( 'Footer', 'bsw-io' ),
@@ -156,3 +166,8 @@ require get_template_directory() . '/inc/extras.php';
  * Load Jetpack compatibility file.
  */
 //require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load custom comment walker
+ */
+require get_template_directory() . '/inc/comment-walker.php';

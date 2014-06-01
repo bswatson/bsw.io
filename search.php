@@ -37,7 +37,7 @@ get_header(); ?>
 
 			<?php endif; ?>
 		</div><!-- column nine -->
-		<?php get_sidebar(); ?>
+		<?php get_sidebar('search-page'); ?>
 	</div><!-- row-content -->
 </div><!-- row -->
 

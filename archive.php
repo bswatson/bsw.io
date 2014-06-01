@@ -7,21 +7,22 @@
  * @package bsw.io
  */
 
-get_header(); ?>
+get_header();
+?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="main" class="row">
+		<div class="row-content buffer-left buffer-right buffer-bottom clear-after">
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
+			<section class="clear-after">
+				<h2 class="page-title">
 					<?php
 						if ( is_category() ) :
-							single_cat_title();
+							single_cat_title(__( 'Category: ', 'bsw-io' ), true);
 
 						elseif ( is_tag() ) :
-							single_tag_title();
+							single_tag_title(__( 'Tag: ', 'bsw-io' ) ,true);
 
 						elseif ( is_author() ) :
 							printf( __( 'Author: %s', 'bsw-io' ), '<span class="vcard">' . get_the_author() . '</span>' );
@@ -67,7 +68,7 @@ get_header(); ?>
 
 						endif;
 					?>
-				</h1>
+				</h2>
 				<?php
 					// Show an optional term description.
 					$term_description = term_description();
@@ -75,31 +76,17 @@ get_header(); ?>
 						printf( '<div class="taxonomy-description">%s</div>', $term_description );
 					endif;
 				?>
-			</header><!-- .page-header -->
+			</section>
+				<?php get_template_part( 'content' , 'listing' )?>
+				<?php get_sidebar(); ?>
+			
+			<?php else : ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+				<?php get_template_part( 'content', 'none' ); ?>
+				<?php get_sidebar( 'search-page' ); ?>
 
-				<?php
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
-				?>
+			<?php endif; ?>
+		</div><!-- row-content -->
+	</div><!-- row -->
 
-			<?php endwhile; ?>
-
-			<?php bsw_io_paging_nav(); ?>
-
-		<?php else : ?>
-
-			<?php get_template_part( 'content', 'none' ); ?>
-
-		<?php endif; ?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php get_footer();
