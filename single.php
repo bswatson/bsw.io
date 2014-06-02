@@ -68,4 +68,4 @@ get_template_part( 'content', 'intro-photos' ); ?>
 		<?php endwhile; // end of the loop. ?>
 	</div><!-- row -->
 
-<?php get_footer(); ?>
+<?php get_footer();

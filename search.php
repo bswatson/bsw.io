@@ -41,4 +41,4 @@ get_header(); ?>
 	</div><!-- row-content -->
 </div><!-- row -->
 
-<?php get_footer(); ?>
+<?php get_footer();
