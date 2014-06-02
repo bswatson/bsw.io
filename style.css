@@ -2795,6 +2795,11 @@ input.button.transparent.dark-grey:hover {
 	padding-left: 3em;
 }
 
+body .gform_wrapper .gform_body .gform_fields input {
+	padding-left: .75em;
+}
+
+body .gform_wrapper .gform_body .gform_fields input,
 .contact-section input.name,
 .contact-section input.email,
 .contact-section input.url,
@@ -5264,4 +5269,22 @@ Admin Bar overlay fix on desktops
 	body.admin-bar main {
 		top: 28px;
 	}
+}
+
+/*--------------------------------------------------------------
+Overriding Gravity Forms Styles
+--------------------------------------------------------------*/
+body .gform_wrapper form .gform_body ul,
+body .gform_wrapper form .gform_body ul li { 
+	list-style-type: none !important; 
+	list-style-image: none !important;
+	list-style: none !important; 
+	background-image: none !important;
+	background: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: none !important
+}
+body .gform_wrapper form .gform_body ul > li:before {
+	content: "";
 }
