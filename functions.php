@@ -108,6 +108,7 @@ add_action( 'widgets_init', 'bsw_io_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bsw_io_scripts() {
+	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'bsw-io-custom-style', get_template_directory_uri() . '/css/layers.min.css' );
 	wp_enqueue_style( 'bsw-io-font-awesome-style', get_template_directory_uri() . '/css/font-awesome.min.css' );
 	wp_enqueue_style( 'bsw-io-style', get_stylesheet_uri() );
@@ -141,6 +142,11 @@ function add_ie_respond_js () {
 	echo '<![endif]-->';
 }
 add_action('wp_head', 'add_ie_respond_js');
+
+/**
+ * Register Custom Post Types and Taxonomies
+ */
+require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
  * Implement the Custom Header feature.
