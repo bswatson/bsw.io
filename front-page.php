@@ -28,39 +28,38 @@ get_header(); ?>
 	</div><!-- intro-wrap -->
 
 	<div id="main">
+
+<?php if(get_field('display_about')) : ?>
 		<section class="row section">
 			<div class="row-content buffer even clear-after">
 				<div class="custom-carousel" data-autoplay="5000" data-pagination="true" data-transition="fade" data-autoheight="false">
-					<div class="carousel-item">
-						<div class="column four">
-							<img src="http://placehold.it/800x300/ddd/fff&text=bsw.io" alt="">
-						</div>
-						<div class="column eight last">
-							<h3>Carousel Item 1</h3>
-							<p>Carousel Description 1</p>
-						</div>
-					</div><!-- carousel-item -->
-					<div class="carousel-item">
-						<div class="column four">
-							<img src="http://placehold.it/800x300/ddd/fff&text=bsw.io" alt="">
-						</div>
-						<div class="column eight last">
-							<h3>Carousel Item 2</h3>
-							<p>Carousel Description 2</p>
-						</div>
-					</div><!-- carousel-item -->
-					<div class="carousel-item">
-						<div class="column four">
-							<img src="http://placehold.it/800x300/ddd/fff&text=bsw.io" alt="">
-						</div>
-						<div class="column eight last">
-							<h3>Carousel Item 3</h3>
-							<p>Carousel Description 3</p>
-						</div>
-					</div><!-- carousel-item -->
+
+				<?php
+					$about = get_field('about_blurbs');
+				?>
+				<?php if( $about ): ?>
+					<?php foreach( $about as $post): ?>
+						<?php setup_postdata($post); ?>
+						<div class="carousel-item">
+							<?php if( get_field('image') ): ?>
+							<div class="column four">
+								<img src="<?php the_field('image'); ?>" />
+							</div>
+							<div class="column eight last">
+							<?php else : ?>
+							<div class="column twelve last">
+							<?php endif; ?>
+								<h3><?php the_field('headline'); ?></h3>
+								<p><?php the_field('description'); ?></p>
+							</div>
+						</div><!-- carousel-item -->
+					<?php endforeach; ?>
+				<?php endif; ?>	
 				</div>
 			</div>
 		</section>
+		<?php wp_reset_postdata(); ?>
+<?php endif; ?>
 
 		<section class="row section">
 			<div class="row-content buffer even clear-after">
@@ -162,137 +161,88 @@ get_header(); ?>
 			</div>
 		</section>
 
-		<section class="row section text-light" style="background-color: #C3C3C3;">
+<?php if(get_field('display_skills')) : ?>
+		<section class="row section <?php the_field('text_color'); ?>" style="background-color: <?php the_field('background_color'); ?>">
 			<div class="row-content buffer even clear-after">
 				<div class="section-title"><h3>Skills</h3></div>
-				<p class="centertxt">Skills Description.<br>With some goals.</p>
-				<div class="chart" data-percent="83" data-bar-color="#1abc46" data-animate="2000">
-					<div class="chart-content">
-						<div class="percent"></div>
-						<div class="chart-title">Back-end</div>
-					</div><!-- chart-content -->
-				</div><!-- chart -->
-				<div class="chart" data-percent="76" data-bar-color="#0abce0" data-animate="2500">
-					<div class="chart-content">
-						<div class="percent"></div>
-						<div class="chart-title">Front-end</div>
-					</div><!-- chart-content -->
-				</div><!-- chart -->
-				<div class="chart" data-percent="95" data-bar-color="#a1ad1c" data-animate="3000">
-					<div class="chart-content">
-						<div class="percent"></div>
-						<div class="chart-title">Caffeine</div>
-					</div><!-- chart-content -->
-				</div><!-- chart -->
+				<p class="centertxt"><?php the_field('intro'); ?></p>
+				<?php
+					$skills = get_field('skills');
+				?>
+				<?php if( $skills ): ?>
+					<?php foreach( $skills as $post): ?>
+						<?php setup_postdata($post); ?>
+						<div class="chart" data-percent="<?php the_field('percentage'); ?>" data-bar-color="<?php the_field('color'); ?>" data-animate="2000">
+							<div class="chart-content">
+								<div class="percent"></div>
+								<div class="chart-title"><?php the_title(); ?></div>
+							</div><!-- chart-content -->
+						</div><!-- chart -->
+					<?php endforeach; ?>
+				<?php endif; ?>	
 			</div>
 		</section>
+		<?php wp_reset_postdata(); ?>
+<?php endif; ?>
 
+<?php if(get_field('display_experience')) : ?>
 		<section class="row section">
 			<div class="row-content buffer even clear-after">
 				<div class="timeline-label column six">
-					<h4>Work experience</h4>
-					<p>Specialties : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et arcu suscipit, condimentum leo vestibulum, sollicitudin quam. Proin quis massa nec urna dictum elementum. Nulla mattis neque vitae est varius, nec mattis ante laoreet. Pellentesque nec arcu imperdiet, rutrum risus at, hendrerit augue..</p>
-					<a class="button transparent aqua">View on Linkedin</a>
+					<h4><?php the_field('experience_title'); ?></h4>
+					<p><?php the_field('experience_description'); ?></p>
+					<a class="button transparent aqua" href="<?php the_field('linkedin_profile'); ?>">View on Linkedin</a>
 				</div><!-- timeline-label -->
+				<?php
+					$experiences = get_field('experiences');
+					usort($experiences, function($a, $b) {
+					    return strcmp($b->start_date,$a->start_date);
+					});
+				?>
+				<?php if( $experiences ): ?>
 				<div class="timeline column six last">
-					<div class="year">
-						<time datetime="2013">2013</time>
-						<div class="experience">
-							<span class="circle"></span>
-							<div class="experience-img"><img src="http://placehold.it/120x120/ddd/fff&text=bsw.io" alt=""></div>
-							<div class="experience-info clear-after">
-								<h5>Company 1</h5>
-								<div class="role">Role 1</div>
-								<p>October 2013 – November 2013 Anywhere, USA</p>
-							</div><!-- experience-info -->
-						</div><!-- experience -->
-						<div class="experience">
-							<span class="circle"></span>
-							<div class="experience-img"><img src="http://placehold.it/120x120/ddd/fff&text=bsw.io" alt=""></div>
-							<div class="experience-info clear-after">
-								<h5>Company 2</h5>
-								<div class="role">Role 2</div>
-								<p>October 2013 – November 2013 Anywhere, USA</p>
-							</div><!-- experience-info -->
-						</div><!-- experience -->
-					</div><!-- year -->
-					<div class="year">
-						<time datetime="2012">2012</time>
-						<div class="experience">
-							<span class="circle"></span>
-							<div class="experience-img"><img src="http://placehold.it/120x120/ddd/fff&text=bsw.io" alt=""></div>
-							<div class="experience-info clear-after">
-								<h5>Company 3</h5>
-								<div class="role">Role 3</div>
-								<p>October 2012 – November 2012 Anywhere, USA</p>
-							</div><!-- experience-info -->
-						</div><!-- experience -->
-						<div class="experience">
-							<span class="circle"></span>
-							<div class="experience-img"><img src="http://placehold.it/120x120/ddd/fff&text=bsw.io" alt=""></div>
-							<div class="experience-info clear-after">
-								<h5>Company 4</h5>
-								<div class="role">Role 4</div>
-								<p>October 2012 – November 2012 Anywhere, USA</p>
-							</div><!-- experience-info -->
-						</div><!-- experience -->
-					</div><!-- year -->
-					<div class="year">
-						<time datetime="2011">2011</time>
-						<div class="experience">
-							<span class="circle"></span>
-							<div class="experience-img"><img src="http://placehold.it/120x120/ddd/fff&text=bsw.io" alt=""></div>
-							<div class="experience-info clear-after">
-								<h5>Company 5</h5>
-								<div class="role">Role 5</div>
-								<p>October 2011 – November 2011 Anywhere, USA</p>
-							</div><!-- experience-info -->
-						</div><!-- experience -->
-					</div><!-- year -->
+					<?php $currentYear = 0; ?>
+					<?php foreach( $experiences as $post): ?>
+						<?php 
+							setup_postdata($post);
+							$year = substr(get_field('start_date'), 0, 4);
+						?>
+						<?php if ($currentYear != $year) : ?>
+							<?php if ($currentYear != 0) : ?>
+								</div><!-- year -->
+							<?php endif; ?>
+							<?php $currentYear = $year; ?>
+							<div class="year">
+								<time datetime="<?php echo $curretYear; ?>"><?php echo $currentYear; ?></time>
+						<?php endif; ?>
+								<div class="experience">
+									<span class="circle"></span>
+									<div class="experience-img"><img src="<?php the_field('company_logo'); ?>"></div>
+									<div class="experience-info clear-after">
+										<h5><?php the_field('company_name'); ?></h5>
+										<div class="role"><?php the_field('role'); ?></div>
+										<?php 
+											$startDate = DateTime::createFromFormat('Ymd', get_field('start_date'))->format('F Y');;
+											$endDate = get_field('end_date') ? DateTime::createFromFormat('Ymd', get_field('end_date'))->format('F Y') : 'Current';
+										?>
+										<p> <?php echo $startDate ?> – <?php echo $endDate?> <?php the_field('location'); ?></p>
+									</div><!-- experience-info -->
+								</div><!-- experience -->
+					<?php endforeach; ?>
 				</div><!-- timeline -->
+				<?php endif; ?>	
+				</div>
 			</div>
 		</section>
-
-		<?php /*
-	<section class="row section">
-	    <div class="row-content buffer even clear-after">
-	        <div class="section-title"><h3>Frankie's Dribbble Shots</h3></div>
-	        <div class="dribbble-items portfolio-section preload" data-username="frankiefreesbie" data-elements="8">
-	        </div><!-- dribbble-items -->
-	        <div class="more-btn"><a class="button transparent pink" href="http://dribbble.com/JustinMezzell">View all Shots</a></div>
-	    </div>
-	</section>
-
-	<section class="row section text-light" style="background-color:#FF605F;">
-	    <div class="row-content buffer even clear-after">
-	        <div class="testimonial-slider centertxt" data-autoplay="5000" data-pagination="true" data-transition="fade" data-autoheight="false">
-	            <div class="quote">
-	                <div class="column twelve last">
-	                    <p>"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."</p>
-	                    <div class="author">John Lennon</div>
-	                </div><!-- column -->
-	            </div><!-- quote -->
-	            <div class="quote">
-	                <div class="column twelve last">
-	                    <p>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy."</p>
-	                    <div class="author">Fabrizio De Andr&egrave;</div>
-	                </div><!-- column -->
-	            </div><!-- quote -->
-	            <div class="quote">
-	                <div class="column twelve last">
-	                    <p>"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour."</p>
-	                    <div class="author">B.B. King</div>
-	                </div><!-- column -->
-	            </div><!-- quote -->
-	        </div><!-- testimonial-slider -->
-	    </div>
-	</section>
-	*/ ?>
+		<?php wp_reset_postdata(); ?>
+<?php endif; ?>
 
 		<section class="row section">
 			<div class="row-content buffer even clear-after">
 				<div class="section-title"><h3>Contact</h3></div>
 				<div class="column nine">
+				<?php echo do_shortcode("[gravityform id=1 title=false description=false ajax=true tabindex=49]"); ?>
+				<!--
 					<form class="contact-section">
 						<span class="pre-input"><i class="icon icon-user"></i></span>
 						<input class="name plain buffer" type="text" placeholder="Full name">
@@ -301,6 +251,7 @@ get_header(); ?>
 						<textarea class="plain buffer" placeholder="Don't forget that kindness is all!"></textarea>
 						<input class="plain button red" type="submit" value="Send">
 					</form>
+					-->
 				</div>
 				<div class="column three last">
 					<div class="widget">
@@ -313,18 +264,20 @@ get_header(); ?>
 					<div class="widget">
 						<h4>I am Social</h4>
 						<ul class="inline meta-social">
-							<li><a href="#" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
-							<li><a href="#" class="facebook-share border-box"><i class="fa fa-facebook fa-lg"></i></a></li>
-							<li><a href="#" class="pinterest-share border-box"><i class="fa fa-pinterest fa-lg"></i></a></li>
+							<li><a href="http://twitter.com/bswatson" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
+							<li><a href="http://facebook.com/bswatson" class="facebook-share border-box"><i class="fa fa-facebook fa-lg"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/bswatson" class="linkedin-share border-box"><i class="fa fa-linkedin fa-lg"></i></a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 
+<?php if(get_field('display_map')) : ?>
+		<?php $location = get_field('location'); ?>
 		<section class="row section">
-			<div class="map" id="map_1" data-maplat="32.8013293" data-maplon="-79.9428948" data-mapzoom="9" data-color="aqua" data-height="22.222" data-img="<?php echo get_template_directory_uri() . '/img/marker.png'; ?>" data-info="Based in Charleston, SC"></div>
+			<div class="map" id="map_1" data-maplat="<?php echo $location['lat']; ?>" data-maplon="<?php echo $location['lng']; ?>" data-mapzoom="<?php the_field('map_zoom'); ?>" data-color="<?php the_field('map_color'); ?>" data-height="22.222" data-img="<?php echo get_template_directory_uri() . '/img/marker.png'; ?>" data-info="Based in <?php the_field('location_display_name'); ?>"></div>
 		</section>
-
-		</div><!-- id-main -->
+<?php endif; ?>
+	</div><!-- id-main -->
 <?php get_footer(); ?>
