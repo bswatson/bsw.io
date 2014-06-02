@@ -16,11 +16,11 @@
 			<section id="top-footer">
 				<?php dynamic_sidebar( 'footer-widgets' ); ?>
 				<div class="widget meta-social column three">
-					<h4>Follow Us</h4>
+					<h4>Follow Me</h4>
 					<ul class="inline">
-						<li><a href="#" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
-						<li><a href="#" class="facebook-share border-box"><i class="fa fa-facebook fa-lg"></i></a></li>
-						<li><a href="#" class="pinterest-share border-box"><i class="fa fa-pinterest fa-lg"></i></a></li>
+						<li><a href="http://twitter.com/bswatson" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
+						<li><a href="http://facebook.com/bswatson" class="facebook-share border-box"><i class="fa fa-facebook fa-lg"></i></a></li>
+						<li><a href="https://www.linkedin.com/in/bswatson" class="linkedin-share border-box"><i class="fa fa-linkedin fa-lg"></i></a></li>
 					</ul>
 				</div>
 			</section><!-- top-footer -->
