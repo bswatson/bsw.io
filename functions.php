@@ -38,8 +38,13 @@ if ( ! function_exists( 'bsw_io_setup' ) ) :
 		 *
 		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 		 */
-		//add_theme_support( 'post-thumbnails' );
-
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 600, 600, true );
+		add_image_size( 'bsw-featured-header', 1800, 600);
+		add_image_size( 'bsw-carousel', 800, 300, true);
+		add_image_size( 'bsw-latest-work', 800, 600, array('center', 'center'));
+		add_image_size( 'bsw-experience-logo', 120, 120, true);
+ 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 				'primary' => __( 'Primary Menu', 'bsw-io' ),
