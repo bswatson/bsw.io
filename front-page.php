@@ -40,7 +40,7 @@
 <?php if(get_field('display_about')) : ?>
 		<section class="row section">
 			<div class="row-content buffer even clear-after">
-				<div class="custom-carousel" data-autoplay="5000" data-pagination="true" data-transition="fade" data-autoheight="false">
+				<div class="custom-carousel" data-autoplay="10000" data-pagination="true" data-transition="fade" data-autoheight="false">
 				<?php $about = get_field('about_blurbs'); ?>
 				<?php if( $about ): ?>
 					<?php foreach( $about as $post): ?>
