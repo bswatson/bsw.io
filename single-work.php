@@ -14,7 +14,7 @@
 				<?php get_template_part( 'content', 'single-work' ); ?>
 			</div><!-- post-area -->
 
-			<? /*
+			<?php /*
 			<div class="meta-social">
 				<ul class="inline center">
 					<li><a href="#" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>

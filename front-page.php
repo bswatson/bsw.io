@@ -75,7 +75,7 @@
 				<div class="grid-items portfolio-section preload">
 				<?php $latest_work = get_field('latest_work'); ?>
 				<?php if( $latest_work ): ?>
-					<? $current_work = 0; ?>
+					<?php $current_work = 0; ?>
 					<?php foreach( $latest_work as $post): ?>
 						<?php setup_postdata($post); ?>
 							<?php if( has_post_thumbnail() ):
@@ -83,7 +83,7 @@
 								$thumbnail_url = $thumbnail['0'];
 								$current_work++;
 							?>
-							<article class="item column <? echo ($current_work == 2) ? 'six' : 'three'; ?>" data-groups='["fun", "icons"]'>
+							<article class="item column <?php echo ($current_work == 2) ? 'six' : 'three'; ?>" data-groups='["fun", "icons"]'>
 								<figure><img src="<?php echo $thumbnail_url; ?>"></figure>
 								<a class="overlay" href="<?php echo esc_url( get_permalink() ); ?>">
 									<div class="overlay-content">
