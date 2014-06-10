@@ -10,16 +10,13 @@
  *
  * @package bsw.io
  */
-
-get_header();
-	get_template_part( 'content' , 'intro' );
 ?>
-
+<?php get_header(); ?>
+<?php get_template_part( 'content' , 'intro' ); ?>
 	<div id="main" class="row">
 		<div class="row-content buffer-left buffer-right buffer-bottom clear-after">
 			<?php get_template_part( 'content' , 'listing' )?>
 			<?php get_sidebar(); ?>
 		</div><!-- row-content -->
 	</div><!-- row -->
-
 <?php get_footer();

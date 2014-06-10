@@ -4,8 +4,8 @@
  *
  * @package bsw.io
  */
-
-get_header(); ?>
+?>
+<?php get_header(); ?>
 
 <div id="main" class="row">
 	<div class="row-content buffer-left buffer-right buffer-bottom clear-after">
