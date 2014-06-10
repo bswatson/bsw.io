@@ -23,6 +23,7 @@ function bsw_io_register_custom_post_types() {
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'map_meta_cap' => true,
+			'has_archive' => false,
 			'hierarchical' => false,
 			'rewrite' => array('slug' => 'experience', 'with_front' => true),
 			'query_var' => true,
@@ -57,6 +58,7 @@ function bsw_io_register_custom_post_types() {
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'map_meta_cap' => true,
+			'has_archive' => false,
 			'hierarchical' => false,
 			'rewrite' => array('slug' => 'self-promotion', 'with_front' => true),
 			'query_var' => true,
@@ -78,6 +80,7 @@ function bsw_io_register_custom_post_types() {
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'map_meta_cap' => true,
+			'has_archive' => false,
 			'hierarchical' => true,
 			'rewrite' => array('slug' => 'skill', 'with_front' => true),
 			'query_var' => true,
@@ -99,6 +102,40 @@ function bsw_io_register_custom_post_types() {
 				'not_found' => __('No Skills Found', 'bsw-io'),
 				'not_found_in_trash' => __('No Skills Found in Trash', 'bsw-io'),
 				'parent' => __('Parent Skill', 'bsw-io'),
+			)
+		) 
+	);
+	
+	register_post_type('work', 
+		array(
+			'label' => __('Work', 'bsw-io'),
+			'description' => '',
+			'public' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'capability_type' => 'post',
+			'map_meta_cap' => true,
+			'has_archive' => false,
+			'hierarchical' => false,
+			'rewrite' => array('slug' => 'work', 'with_front' => true),
+			'query_var' => true,
+			'menu_icon' => 'dashicons-welcome-view-site',
+			'supports' => 			array('title','editor','excerpt','trackbacks','comments','revisions','thumbnail','author','page-attributes','post-formats'),
+			'labels' => array (
+				'name' => __('Work', 'bsw-io'),
+				'singular_name' => __('Work', 'bsw-io'),
+				'menu_name' => __('Work', 'bsw-io'),
+				'add_new' => __('Add Work', 'bsw-io'),
+				'add_new_item' => __('Add New Work', 'bsw-io'),
+				'edit' => __('Edit', 'bsw-io'),
+				'edit_item' => __('Edit Work', 'bsw-io'),
+				'new_item' => __('New Work', 'bsw-io'),
+				'view' => __('View Work', 'bsw-io'),
+				'view_item' => __('View Work', 'bsw-io'),
+				'search_items' => __('Search Work', 'bsw-io'),
+				'not_found' => __('No Work Found', 'bsw-io'),
+				'not_found_in_trash' => __('No Work Found in Trash', 'bsw-io'),
+				'parent' => __('Parent Work', 'bsw-io'),
 			)
 		) 
 	);
@@ -125,7 +162,37 @@ function bsw_io_register_custom_taxonomies() {
 			'labels' => array (
 				'search_items' => __('Promotion Types', 'bsw-io'),
 			)
+		)
+	);
+	
+	register_taxonomy( 'capabilities',
+		array (
+			0 => 'work',
+		),
+		array( 'hierarchical' => false,
+			'label' => __('Capabilities', 'bsw-io'),
+			'show_ui' => true,
+			'query_var' => true,
+			'show_admin_column' => false,
+			'labels' => array (
+				'search_items' => __('Capability', 'bsw-io'),
+			)
 		) 
-	); 
+	);
+	
+	register_taxonomy( 'roles',
+		array (
+			0 => 'work',
+		),
+		array( 'hierarchical' => false,
+			'label' => __('Roles', 'bsw-io'),
+			'show_ui' => true,
+			'query_var' => true,
+			'show_admin_column' => false,
+			'labels' => array (
+				'search_items' => __('Role', 'bsw-io'),
+			)
+		) 
+	);
 }
 add_action('init', 'bsw_io_register_custom_taxonomies');
