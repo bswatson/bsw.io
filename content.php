@@ -6,7 +6,9 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('clear-after'); ?>>
 	<div class="column three">
-		<figure><img src="http://placehold.it/600x600/ddd/fff&text=bsw.io" alt=""></figure>
+		<?php if (has_post_thumbnail()) : ?>
+		<figure><?php the_post_thumbnail(); ?></figure>
+		<?php endif; ?>
 	</div><!-- column three -->
 	<div class="column nine last">
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
