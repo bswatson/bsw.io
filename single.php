@@ -4,9 +4,9 @@
  *
  * @package bsw.io
  */
-
-get_header();
-get_template_part( 'content', 'intro-photos' ); ?>
+?> 
+<?php get_header(); ?>
+<?php //TODO: get_template_part( 'content', 'intro-photos' ); ?>
 	
 	<div id="main" class="row">
 		<?php while ( have_posts() ) : the_post(); ?>
@@ -16,6 +16,7 @@ get_template_part( 'content', 'intro-photos' ); ?>
 				<?php get_template_part( 'content', 'single' ); ?>
 			</div><!-- post-area -->
 
+			<? /*
 			<div class="meta-social">
 				<ul class="inline center">
 					<li><a href="#" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
@@ -23,7 +24,7 @@ get_template_part( 'content', 'intro-photos' ); ?>
 					<li><a href="#" class="pinterest-share border-box"><i class="fa fa-pinterest fa-lg"></i></a></li>
 				</ul>
 			</div>
-
+			
 			<div class="related clear-after">
 				<h4>Related Posts</h4>
 				<div class="item">
@@ -54,9 +55,10 @@ get_template_part( 'content', 'intro-photos' ); ?>
 							<h2>Moove</h2>
 							<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						</div><!-- overlay-content -->
-					</a><!-- overlay -->								
-				</div>														
-			</div>						
+					</a><!-- overlay -->
+				</div>
+			</div>
+		*/	?>
 
 		<?php
 			// If comments are open or we have at least one comment, load up the comment template
